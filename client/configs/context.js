@@ -9,7 +9,7 @@ export default function () {
     Meteor,
     FlowRouter,
     Collections,
-    'LocalState': new ReactiveDict(),
+    LocalState: new ReactiveDict(),
     Tracker
   };
 }
