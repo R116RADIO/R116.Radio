@@ -122,7 +122,9 @@
 // and our UI components are often composed of Objects and Components
 
 @import "{}/client/modules/core/stylesheets/components.mainLayout";
-@import "{}/client/modules/home/stylesheets/components.mainLayout";
+@import "{}/client/modules/home/stylesheets/components.header";
+@import "{}/client/modules/home/stylesheets/components.programSchedule";
+@import "{}/client/modules/home/stylesheets/components.radioPlayer";
 
 // @import "components.card";
 // @import "components.form";

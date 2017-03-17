@@ -6,11 +6,15 @@
 }
 
 .home-page {
-  background: $radio-col-dark;
+  background: $radio-col-blocked;
   color: $radio-col-light;
   &__program-schedule {
-    list-style: none;
-    max-width: 300px;
+    ul {
+      list-style: none;
+      max-width: 300px;
+      margin-right: 70px;
+      padding-bottom: 50px;
+    }
     &--title {
       color: $radio-col-light;
       margin: 0 0 30px 0;
@@ -35,18 +39,34 @@
         border-radius: 17.5px;
       }
     }
+    &--download {
+      a {
+        display: inline-block;
+        vertical-align: middle;
+        margin-left: 12px;
+        &:first-child {
+          margin-left: 0;
+        }
+        img {
+          max-height: 100%;
+        }
+      }
+    }
   }
 
   &__contact {
-    background: $radio-col-blocked;
     display: flex;
     justify-content: center;
+    position: relative;
+    z-index: 1;
+    padding-top: 65px;
     &--form {
       font-weight: 500;
       display: flex;
       flex-direction: column;
       margin-right: 100px;
       width: 30vw;
+      max-width: 360px;
       &--title {
         margin: 20px 0px;
         line-height: 20px;
@@ -90,14 +110,62 @@
           display: inline-block;
           font-size: 48px;
           margin-right: 25px;
+          &:last-child {
+            margin-right: 0;
+          }
         }
       }
     }
   }
 
   &__footer {
-    background: $radio-col-blocked;
     font-size: 12px;
     padding: 60px 0px 10px 60px;
+  }
+}
+
+@media (max-width: 767px) {
+  .home-page {
+    &__program-schedule {
+      padding: 0 15px;
+      ul {
+        margin: 0 auto;
+        padding-bottom: 30px;
+      }
+      &--title {
+        font-size: 24px;
+      }
+      &--download {
+        text-align: center;
+        padding-bottom: 30px;
+        a {
+          height: 40px;
+        }
+      }
+    }
+    &__contact {
+      display: block;
+      &--form {
+        width: auto;
+        margin: 0 auto;
+      }
+      &--follow-us {
+        text-align: center;
+      }
+    }
+    &__footer {
+      padding: 60px 15px 10px;
+      text-align: center;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .home-page {
+    &__contact {
+      &--form {
+        max-width: 274px;
+      }
+    }
   }
 }
