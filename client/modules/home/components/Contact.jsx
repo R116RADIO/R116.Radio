@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import ContactForm from './ContactForm.jsx';
 import FollowUs from './FollowUs.jsx';
 
-class Contact extends Component {
+class Contact extends React.Component {
   render() {
     return (
       <div className="home-page__contact">

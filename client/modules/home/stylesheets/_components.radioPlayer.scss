@@ -1,0 +1,44 @@
+.home-page {
+  &__album-image {
+    max-width: 302px;
+    width: 100%;
+    border: 1px solid $radio-col-light;
+  }
+  &__player-box {
+    display: flex;
+    align-items: flex-start;
+  }
+  &__audio {
+    &__source {
+      display: none;
+    }
+    &__btn {
+      width: 76px;
+      height: 76px;
+      padding: 10px;
+      background-color: $radio-col-dark-red;
+      border-radius: 50%;
+      border: 2px solid $radio-col-light;
+      box-shadow: inset 0 0 4px $radio-col-black;
+      font-size: 30px;
+      color: $radio-col-light;
+      outline: none;
+      box-sizing: border-box;
+    }
+  }
+  &__detail {
+    margin: 5px 20px;
+    span {
+      display: block;
+    }
+  }
+  &__song-name {
+    font-size: 24px;
+    color: $radio-col-light;
+    font-weight: bold;
+  }
+  &__music-type {
+    font-size: 18px;
+    font-weight: bold;
+  }
+}

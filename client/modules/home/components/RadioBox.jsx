@@ -1,11 +1,12 @@
-import React, {Component} from 'react';
+import React from 'react';
+import RadioPlayer from './RadioPlayer.jsx';
 import ProgramSchedule from './ProgramSchedule.jsx';
 
-class RadioBox extends Component {
+class RadioBox extends React.Component {
   render() {
     return (
       <div>
-        {/* <RadioPlayer />*/}
+        <RadioPlayer />
         <ProgramSchedule />
       </div>
     );
