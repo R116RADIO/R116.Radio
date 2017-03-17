@@ -5,7 +5,7 @@ class ContactForm extends Component {
     return (
       <div className='home-page__contact--form'>
         <h4 className='home-page__contact--form--title'>Write to us</h4>
-        <form id="form-contact">
+        <form id="form-contact" className="form-contact">
           <div className="input-group">
             <label htmlFor="email">Enter your email address</label>
             <input type="text" id="email" placeholder="Enter your email addres" />

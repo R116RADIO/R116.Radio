@@ -17,21 +17,31 @@ class ProgramSchedule extends Component {
     const programActive = ' home-page__program-schedule--item--active';
 
     return (
-      <ul className="home-page__program-schedule">
+      <div className="home-page__program-schedule">
         <h3 className="home-page__program-schedule--title">Programme Schedule</h3>
-        {
-          _.map(programSchedule, (program, index) => {
-            return (
-              <li className={'home-page__program-schedule--item' + (index === 3 ? programActive : '')} key={index}>
-                <div className="home-page__program-schedule--item--time">
-                  {program.time.from} - {program.time.to}
-                </div>
-                <div className="home-page__program-schedule--item--program">{program.program}</div>
-              </li>
-            );
-          })
-        }
-      </ul>
+        <ul>
+          {
+            _.map(programSchedule, (program, index) => {
+              return (
+                <li className={'home-page__program-schedule--item' + (index === 3 ? programActive : '')} key={index}>
+                  <div className="home-page__program-schedule--item--time">
+                    {program.time.from} - {program.time.to}
+                  </div>
+                  <div className="home-page__program-schedule--item--program">{program.program}</div>
+                </li>
+              );
+            })
+          }
+        </ul>
+        <div className="home-page__program-schedule--download">
+          <a href="#" className="google-play-btn">
+            <img src="/img/google-play.png" alt=""/>
+          </a>
+          <a href="#" className="appstore-btn">
+            <img src="/img/appstore.png" alt=""/>
+          </a>
+        </div>
+      </div>
     );
   }
 }
