@@ -1,0 +1,76 @@
+{
+  "IcoMoonType": "selection",
+  "icons": [
+    {
+      "icon": {
+        "paths": [
+          "M886.716 870.783c-22.010-138.825-137.644-243.78-269.526-282.601 56.669-62.79 86.826-165.157 86.939-234.564 0.169-106.406-87.614-216.93-199.511-216.93-111.875 0-199.657 110.524-199.489 216.93 0.113 69.711 30.517 172.673 87.659 235.374-130.712 39.475-244.894 143.923-266.758 281.791-9.047 57.096 57.592 94.996 100.712 114.407 84.598 38.079 181.225 51.042 273.273 51.718 93.173 0.675 190.565-11.365 276.998-47.802 45.315-19.107 119.279-57.907 109.714-118.311z"
+        ],
+        "attrs": [
+          {
+            "fill": "rgb(211, 240, 242)"
+          }
+        ],
+        "isMulticolor": false,
+        "isMulticolor2": false,
+        "grid": 0,
+        "tags": [
+          "profile__image--default-image"
+        ]
+      },
+      "attrs": [
+        {
+          "fill": "rgb(211, 240, 242)"
+        }
+      ],
+      "properties": {
+        "order": 2,
+        "id": 0,
+        "name": "zigvy-profile-default-image",
+        "prevSize": 32,
+        "code": 59648
+      },
+      "setIdx": 0,
+      "setId": 2,
+      "iconIdx": 0
+    }
+  ],
+  "height": 1024,
+  "metadata": {
+    "name": "icomoon"
+  },
+  "preferences": {
+    "showGlyphs": true,
+    "showQuickUse": true,
+    "showQuickUse2": true,
+    "showSVGs": true,
+    "fontPref": {
+      "prefix": "icon-",
+      "metadata": {
+        "fontFamily": "icomoon",
+        "majorVersion": 1,
+        "minorVersion": 0
+      },
+      "metrics": {
+        "emSize": 1024,
+        "baseline": 6.25,
+        "whitespace": 50
+      },
+      "embed": false,
+      "cssVars": true,
+      "cssVarsFormat": "scss",
+      "postfix": "si"
+    },
+    "imagePref": {
+      "prefix": "icon-",
+      "png": true,
+      "useClassSelector": true,
+      "color": 0,
+      "bgColor": 16777215,
+      "classSelector": ".icon"
+    },
+    "historySize": 100,
+    "showCodes": true,
+    "gridSize": 16
+  }
+}

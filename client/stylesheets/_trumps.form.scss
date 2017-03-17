@@ -1,0 +1,26 @@
+.form-control,
+.input-group-addon {
+  box-shadow: none !important;
+  outline: 0 !important;
+  // border: 2px solid $radio-col-regular;
+  border-width: 2px !important;
+
+  &:focus,
+  .has-success &,
+  .has-warning &,
+  .has-error & {
+    border-color: $input-bg !important;
+    background-color: $input-bg;
+    color: $input-color;
+  }
+
+  &:focus {
+    border-color: $input-border-focus;
+    background-color: $radio-col-light;
+  }
+}
+
+.help-block {
+  font-size: $radio-fs-small;
+  color: $radio-col-loud;
+}

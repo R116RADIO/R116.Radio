@@ -1,0 +1,12 @@
+node_modules/
+.vscode/
+.idea/
+.DS_Store
+npm-debug.log
+
+# Configuration
+settings-development.json
+settings-production.json
+
+# User Uploads
+.uploads/

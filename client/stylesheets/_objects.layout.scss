@@ -1,0 +1,9 @@
+#react-root {
+  position: relative;
+  min-height: 100%;
+  padding: (8 * $radio-bm) 0;
+
+  // needed for auth layout
+  max-width: $radio-maxwidth;
+  margin: 0 auto;
+}

@@ -1,0 +1,9 @@
+.alert {
+  border-width: 0;
+  font-size: $radio-fs-small;
+  color: $radio-col-light;
+
+  .fa {
+    margin-right: $radio-bm;
+  }
+}

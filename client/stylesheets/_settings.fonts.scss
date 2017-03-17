@@ -1,0 +1,25 @@
+@font-face {
+  font-family: 'Fira Sans';
+  font-weight: normal;
+  font-style: normal;
+  src: url('/css/fonts/firasans/firasans-light-webfont.woff2') format('woff2'),
+       url('/css/fonts/firasans/firasans-light-webfont.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Fira Sans';
+  font-weight: bold;
+  font-style: normal;
+  src: url('/css/fonts/firasans/firasans-medium-webfont.woff2') format('woff2'),
+       url('/css/fonts/firasans/firasans-medium-webfont.woff') format('woff');
+}
+
+// font sizes
+$radio-fs-tiny: 12px;
+$radio-fs-small: 14px;
+$radio-fs-regular: 16px;
+$radio-fs-large: 23px;
+
+// font weights
+$radio-fw-normal: light; // 300
+$radio-fw-bold: bold; // 700, but we use fira sans medium @ 500

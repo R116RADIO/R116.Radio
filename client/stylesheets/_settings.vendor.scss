@@ -1,0 +1,97 @@
+// Override font awesome vars in
+// ./fontawesome/_variables.scss
+$fa-font-path:        "/css/fonts/fontawesome";
+
+// Override Bootstrap vars in
+// ../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/variables
+
+/**
+ * base layout
+ */
+$font-family-sans-serif:  "Fira Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+$font-size-base:          $radio-fs-regular;
+$font-size-large:         $radio-fs-large;
+$font-size-small:         $radio-fs-small;
+
+$headings-font-weight:    $radio-fw-bold;
+$btn-font-weight:         $radio-fw-bold;
+$alert-link-font-weight:  $radio-fw-bold;
+$badge-font-weight:       $radio-fw-bold;
+$close-font-weight:       $radio-fw-bold;
+
+$screen-xs:                  480px;
+$screen-sm:                  768px;
+$screen-md:                  992px;
+$screen-lg:                  1200px;
+
+/**
+ * base colors
+ */
+$brand-primary:         $radio-col-brand;
+$brand-success:         $radio-col-success;
+$brand-info:            $radio-col-info;
+$brand-warning:         $radio-col-warning;
+$brand-danger:          $radio-col-danger;
+
+$body-bg:               $radio-col-light;
+$text-color:            $radio-col-dark;
+
+$link-color:            $radio-col-brand;
+$link-hover-color:      $radio-col-dark;
+$link-hover-decoration: none;
+
+$gray-base:              $radio-col-regular;
+$gray-darker:            lighten($radio-col-regular, 13.5%);
+$gray-dark:              $radio-col-loud;
+$gray:                   $radio-col-regular;
+$gray-light:             $radio-col-quiet;
+$gray-lighter:           lighten($radio-col-regular, 93.5%);
+
+$btn-default-color:              $radio-col-light;
+$btn-default-bg:                 $radio-col-primary;
+
+
+/**
+ * navbar
+ */
+$navbar-default-color:             $radio-col-dark;
+$navbar-default-bg:                rgba($radio-col-light, .95);
+$navbar-default-border:            none;
+
+$navbar-default-link-color:                $link-color;
+$navbar-default-link-hover-color:          $link-hover-color;
+$navbar-default-link-active-color:         $link-hover-color;
+
+
+
+/**
+ * forms
+ */
+$input-bg:                       $radio-col-regular;
+$input-border:                   $radio-col-regular;
+$input-border-focus:             $radio-col-loud;
+$input-group-addon-bg:           $radio-col-regular;
+$input-group-addon-border-color: $radio-col-regular;
+$input-color:                    $radio-col-dark;
+$input-color-placeholder:        lighten($radio-col-loud, 10%);
+
+// $input-bg-disabled:              $gray-lighter !default;
+// $input-border-radius:            $border-radius-base !default;
+// $input-border-radius-large:      $border-radius-large !default;
+// $input-border-radius-small:      $border-radius-small !default;
+// $input-color-placeholder:        #999 !default;
+// $input-height-base:              ($line-height-computed + ($padding-base-vertical * 2) + 2) !default;
+// $input-height-large:             (ceil($font-size-large * $line-height-large) + ($padding-large-vertical * 2) + 2) !default;
+// $input-height-small:             (floor($font-size-small * $line-height-small) + ($padding-small-vertical * 2) + 2) !default;
+
+/**
+ * alerts
+ */
+$state-success-text:             $brand-success;
+$state-success-bg:               $brand-success;
+$state-danger-text:              $brand-danger;
+$state-danger-bg:                $brand-danger;
+$state-info-text:                $brand-info;
+$state-info-bg:                  $brand-info;
+$state-warning-text:             $brand-warning;
+$state-warning-bg:               $brand-warning;
