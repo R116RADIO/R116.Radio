@@ -1,0 +1,103 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+}
+
+.home-page {
+  background: $radio-col-dark;
+  color: $radio-col-light;
+  &__program-schedule {
+    list-style: none;
+    max-width: 300px;
+    &--title {
+      color: $radio-col-light;
+      margin: 0 0 30px 0;
+      text-align: center;
+    }
+    &--item {
+      display: flex;
+      padding: 5px 15px;
+      margin: 5px 0;
+      border: 1px solid transparent;
+      font-size: 15px;
+      &--time {
+        font-weight: 400;
+        width: 50%;
+      }
+      &--program {
+        font-weight: 600;
+        width: 50%;
+      }
+      &--active {
+        border: 1px solid $radio-col-light;
+        border-radius: 17.5px;
+      }
+    }
+  }
+
+  &__contact {
+    background: $radio-col-blocked;
+    display: flex;
+    justify-content: center;
+    &--form {
+      font-weight: 500;
+      display: flex;
+      flex-direction: column;
+      margin-right: 100px;
+      width: 30vw;
+      &--title {
+        margin: 20px 0px;
+        line-height: 20px;
+      }
+      .input-group {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 15px;
+        label {
+          font-size: 13px;
+        }
+        input, textarea {
+          padding: 5px 10px;
+          color: $radio-col-dark;
+          border: 1px solid $radio-col-light;
+          border-radius: 3px;
+          width: 100%;
+          resize: vertical;
+        }
+      }
+      button {
+        width: 100%;
+        background: $radio-col-dark;
+        border: 1px solid $radio-col-dark;
+        padding: 5px 10px;
+        text-align: center;
+        border-radius: 3px;
+        font-weight: 600;
+      }
+    }
+
+    &--follow-us {
+      margin-top: 60px;
+      font-weight: 500;
+      &--title {
+        margin: 0;
+        line-height: 20px;
+      }
+      &--social {
+        li {
+          display: inline-block;
+          font-size: 48px;
+          margin-right: 25px;
+        }
+      }
+    }
+  }
+
+  &__footer {
+    background: $radio-col-blocked;
+    font-size: 12px;
+    padding: 60px 0px 10px 60px;
+  }
+}
