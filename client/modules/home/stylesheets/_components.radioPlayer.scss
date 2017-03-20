@@ -32,7 +32,7 @@
   &__player-box {
     display: flex;
     align-items: flex-start;
-    padding-top: 38px;
+    padding-top: 5vh;
   }
   &__audio {
     &__source {
@@ -68,6 +68,7 @@
     font-weight: bold;
   }
   &__music-type {
+    font-size: 14px;
     color: $radio-col-loud;
   }
 }
@@ -129,8 +130,16 @@
 
 @media (max-width: 767px) {
   .radio-box {
+    height: calc(100vh - 107px);
+    -webkit-transform: none;
+    transform: none;
+    padding: 0;
+    margin-top: 0;
     .inner {
+      padding-top: 5vh;
       display: block;
+      -webkit-transform: none;
+      transform: none;
     }
   }
   .radio-player {
@@ -143,7 +152,10 @@
       display: none;
     }
     &.hidden-desktop {
+      position: absolute;
+      bottom: 0;
       display: block;
+      z-index: 100;
     }
   }
   .quality {
