@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import moment from 'moment';
 
 class ProgramSchedule extends Component {
   constructor(props) {
@@ -7,15 +8,11 @@ class ProgramSchedule extends Component {
     };
   }
 
-  componentDidMount() {
-    // const now = new Date();
-  }
-
-
   render() {
     const programSchedule = ENUMS.PROGRAM_SCHEDULE;
     const programActive = ' home-page__program-schedule--item--active';
 
+    console.log(moment().utcOffset());
     return (
       <div className="home-page__program-schedule">
         <h3 className="home-page__program-schedule--title">Programme Schedule</h3>

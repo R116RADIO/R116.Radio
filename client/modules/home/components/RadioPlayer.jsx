@@ -5,12 +5,12 @@ class RadioPlayer extends React.Component {
     super(props);
     this.state = {
       iconAudio: true
-    }
+    };
     this.onPlayAudio = this.onPlayAudio.bind(this);
   }
 
   onPlayAudio() {
-    const audioFile = document.getElementById("audio"); 
+    const audioFile = document.getElementById('audio');
 
     this.setState({iconAudio: !this.state.iconAudio});
 
@@ -19,13 +19,13 @@ class RadioPlayer extends React.Component {
     else
       audioFile.pause();
   }
-  
+
   render() {
     // let currentSong = <span id="cc_strinfo_rawmeta_rjakech" className="cc_streaminfo radio-player__song-name"></span>
     // let bitRate = <span id="cc_strinfo_bitrate_rjakech" className="cc_streaminfo"></span>
-    // let currentPlaylist = <span id="cc_strinfo_playlist_rjakech" className="cc_streaminfo radio-player__music-type"></span> 
-    let albumImage = <img id="cc_strinfo_trackimageurl_rjakech" className="cc_streaminfo radio-player__album-image" />
-    let iconState = this.state.iconAudio ? 'fa-play' : 'fa-pause';
+    // let currentPlaylist = <span id="cc_strinfo_playlist_rjakech" className="cc_streaminfo radio-player__music-type"></span>
+    const albumImage = <img id="cc_strinfo_trackimageurl_rjakech" className="cc_streaminfo radio-player__album-image" />;
+    const iconState = this.state.iconAudio ? 'fa-play' : 'fa-pause';
 
     return (
       <div className="radio-player">
@@ -40,7 +40,7 @@ class RadioPlayer extends React.Component {
             </button>
           </div>
           <div className="radio-player__detail">
-            {/*currentSong}
+            {/* currentSong}
             {currentPlaylist*/}
             <span className="radio-player__song-name">All that I am</span>
             <span className="radio-player__singer">Deitrick Haddon</span>
