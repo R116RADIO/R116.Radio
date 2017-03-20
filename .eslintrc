@@ -22,6 +22,7 @@
 
   "globals": {
     "ENUMS": true,
+    "CONST": true,
     "GLOBAL": true
   },
 
