@@ -1,6 +1,6 @@
 import React from 'react';
 import RadioPlayer from './RadioPlayer.jsx';
-import ProgramSchedule from './ProgramSchedule.jsx';
+
 import AudioQuality from './AudioQuality.jsx';
 
 class RadioBox extends React.Component {
@@ -9,7 +9,6 @@ class RadioBox extends React.Component {
       <div className="radio-box">
         <div className="inner">
           <RadioPlayer />
-          <ProgramSchedule />
           <div className="quality-wrapper hidden-desktop">
             <AudioQuality />
           </div>

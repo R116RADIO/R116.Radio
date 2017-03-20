@@ -1,6 +1,8 @@
 .header {
   position: relative;
   z-index: 1;
+  display: inline-block;
+  width: 100%;
   background-color: $radio-col-dark;
   &__logo {
     display: inline-block;
