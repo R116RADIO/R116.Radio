@@ -8,16 +8,24 @@ import Footer from './Footer.jsx';
 class Home extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      quality: 32
+    };
+    this.changeQuality = this.changeQuality.bind(this);
+  }
 
+  changeQuality(quality) {
+    this.setState({
+      quality
+    });
   }
 
   render() {
     return (
       <div className="home-page">
-        <Header />
+        <Header quality={this.state.quality} changeQuality={this.changeQuality} />
         <div className="radio-box-all">
-          <RadioBox />
+          <RadioBox quality={this.state.quality} changeQuality={this.changeQuality} />
           <ProgramSchedule />
         </div>
         <Contact />
