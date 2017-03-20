@@ -128,8 +128,9 @@
 @media (max-width: 767px) {
   .home-page {
     &__program-schedule {
-      display: none;
       padding: 0 15px;
+      margin-top: 45px;
+      flex: 1;
       ul {
         margin: 0 auto;
         padding-bottom: 30px;

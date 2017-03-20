@@ -36,6 +36,7 @@
     transform: skew(0deg, -10deg);
     background-color: $radio-col-blocked;;
   }
+
 }
 
 .radio-player {
@@ -149,7 +150,7 @@
 
 @media (max-width: 767px) {
   .radio-box-all {
-    height: calc(100vh - 107px);
+    flex-flow: column;
     padding: 0;
     margin-top: 0;
     display: flex;
@@ -161,9 +162,15 @@
     &:before{
       display: none
     }
-    .inner {
-      -webkit-transform: none;
-      transform: none;
+    .radio-box{
+      position: relative;
+      flex: 1;
+      height: calc(100vh - 107px);
+      align-items: center;
+      align-content: center;
+      display: flex;
+      width: 100%;
+      justify-content: center;
     }
   }
   .radio-player {
