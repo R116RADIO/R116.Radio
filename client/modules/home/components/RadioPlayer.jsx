@@ -15,6 +15,7 @@ class RadioPlayer extends React.Component {
 
     audioFile.load();
     audioFile.play();
+    this.setState({iconAudio: false});
   }
 
   componentDidUpdate(prevProps) {
