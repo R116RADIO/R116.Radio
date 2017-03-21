@@ -38,8 +38,11 @@
 
 .radio-player {
   margin-right: 100px;
+  &__image-box {
+    text-align: center;
+  }
   &__album-image {
-    max-width: 302px;
+    max-width: 150px;
     width: 100%;
     border: 1px solid $radio-col-light;
   }

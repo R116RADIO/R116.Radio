@@ -65,7 +65,9 @@ class RadioPlayer extends React.Component {
 
     return (
       <div className="radio-player">
-        {albumImage}
+        <div className="radio-player__image-box">
+          {albumImage}
+        </div>
         <div className="radio-player__player-box">
           <div className="radio-player__audio">
             {radioPlayer}
