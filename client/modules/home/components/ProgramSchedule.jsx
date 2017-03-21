@@ -67,7 +67,7 @@ class ProgramSchedule extends Component {
           }
         </ul>
         <div className="home-page__program-schedule--download">
-          <a href="#" className="google-play-btn">
+          <a href="https://play.google.com/store/apps/details?id=com.r116.radio" target="_blank" className="google-play-btn">
             <img src="/img/google-play.png" alt="" />
           </a>
           <a href="#" className="appstore-btn">
