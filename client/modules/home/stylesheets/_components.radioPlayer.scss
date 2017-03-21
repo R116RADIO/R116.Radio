@@ -69,35 +69,32 @@
       }
     }
   }
-  $lines-to-show: 2;
-  $font-size: 24px;
+  $lines-to-show: 1;
+  $font-size: 22px;
   &__detail {
     margin: 0 0 0 20px;
     span {
       display: block;
-      display: -webkit-box;
       width: 200px;
-      line-height: 1;
-      -webkit-line-clamp: $lines-to-show;
-      -webkit-box-orient: vertical;
+      white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
     }
   }
   &__song-name {
-    font-size: 24px;
+    font-size: 22px;
     height: $lines-to-show * $font-size;
     color: $radio-col-light;
     font-weight: bold;
   }
   &__singer {
-    font-size: 18px;
+    font-size: 16px;
     font-weight: bold;
     height: 18px;
     margin: 8px 0;
   }
   &__music-type {
-    font-size: 14px;
+    font-size: 12px;
     height: 14px;
     color: $radio-col-loud;
   }
