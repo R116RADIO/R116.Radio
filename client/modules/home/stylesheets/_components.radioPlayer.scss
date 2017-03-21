@@ -69,8 +69,6 @@
       }
     }
   }
-  $lines-to-show: 1;
-  $font-size: 22px;
   &__detail {
     margin: 0 0 0 20px;
     span {
@@ -83,7 +81,7 @@
   }
   &__song-name {
     font-size: 22px;
-    height: $lines-to-show * $font-size;
+    height: 24px;
     color: $radio-col-light;
     font-weight: bold;
   }
