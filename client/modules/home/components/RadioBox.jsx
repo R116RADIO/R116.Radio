@@ -11,7 +11,9 @@ class RadioBox extends React.Component {
     return (
       <div className="radio-box">
         <div className="inner">
-          <RadioPlayer quality={this.props.quality} />
+          <RadioPlayer
+            quality={this.props.quality}
+            currentProgram={this.props.currentProgram} />
           <div className="quality-wrapper hidden-desktop">
             <AudioQuality quality={this.props.quality} changeQuality={this.props.changeQuality}/>
           </div>

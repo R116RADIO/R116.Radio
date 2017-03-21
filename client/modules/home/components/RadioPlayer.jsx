@@ -76,7 +76,7 @@ class RadioPlayer extends React.Component {
           <div className="radio-player__detail">
             {trackTitle}
             {trackArtist}
-            <span className="radio-player__music-type">R & B Soul</span>
+            <span className="radio-player__music-type">{this.props.currentProgram}</span>
           </div>
         </div>
       </div>
@@ -85,7 +85,8 @@ class RadioPlayer extends React.Component {
 }
 
 RadioPlayer.propTypes = {
-  quality: React.PropTypes.number.isRequired
+  quality: React.PropTypes.number.isRequired,
+  currentProgram: React.PropTypes.string.isRequired
 };
 
 export default RadioPlayer;
