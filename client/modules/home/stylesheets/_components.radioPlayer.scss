@@ -1,7 +1,7 @@
 .radio-box-all {
   position: relative;
   display: flex;
-  height: calc(100vh - 95px);
+  height: calc(100vh - 150px);
   align-items: center;
   min-height: 650px;
   padding-top: 50px;
@@ -93,7 +93,6 @@
   &__singer {
     font-size: 16px;
     font-weight: bold;
-    height: 18px;
     margin: 3px 0px 8px;
   }
   &__music-type {
