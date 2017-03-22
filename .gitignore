@@ -10,3 +10,6 @@ settings-production.json
 
 # User Uploads
 .uploads/
+
+.radioBundle
+.deploy
