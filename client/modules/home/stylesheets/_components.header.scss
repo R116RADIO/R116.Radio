@@ -15,11 +15,25 @@
 }
 
 @media (max-width: 767px) {
+  #landscape{
+    .header{
+      &__logo{
+        max-width: 120px;
+      }
+    }
+  }
   .header {
     text-align: center;
     &__logo {
       max-width: 145px;
       margin: 0;
+    }
+  }
+}
+@media (max-width: 480px) {
+  .header{
+    &__logo{
+      max-width: 120px;
     }
   }
 }
