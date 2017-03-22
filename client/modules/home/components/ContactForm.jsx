@@ -37,7 +37,7 @@ class ContactForm extends Component {
 
   render() {
     return (
-      <div className='home-page__contact--form'>
+      <div id="contacForm" className='home-page__contact--form'>
         <h4 className='home-page__contact--form--title'>Write to us</h4>
         <form id="form-contact" className="form-contact" onSubmit={this.handleSubmit}>
           <div className="input-group">

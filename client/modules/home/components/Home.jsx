@@ -27,6 +27,15 @@ class Home extends React.Component {
       currentProgram
     });
   }
+  componentDidMount() {
+    $(window).scroll(function () {
+      if ($(window).scrollTop() > 150)
+        $('.scrollDown').css('display', 'none');
+      else
+        $('.scrollDown').css('display', 'inline');
+
+    });
+  }
 
   render() {
     return (
@@ -40,6 +49,9 @@ class Home extends React.Component {
           <ProgramSchedule
             currentProgram={this.state.currentProgram}
             changeCurrentProgram={this.changeCurrentProgram} />
+          <a href="#contacForm" className="scrollDown bounce">
+            <img src="img/md-down.svg"/>
+          </a>
         </div>
         <Contact />
         <Footer />
