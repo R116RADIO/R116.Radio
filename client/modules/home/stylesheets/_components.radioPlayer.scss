@@ -1,6 +1,9 @@
 .radio-box-all {
   position: relative;
   display: flex;
+  display: -moz-box;
+  display:-ms-flexbox;
+  display:-webkit-flex;
   height: calc(100vh - 150px);
   align-items: center;
   min-height: 650px;
@@ -11,6 +14,9 @@
   background-color: $radio-col-dark;
   .inner {
     display: flex;
+    display: -moz-box;
+    display:-ms-flexbox;
+    display:-webkit-flex;
     align-items: flex-start;
     justify-content: center;
   }
@@ -50,6 +56,9 @@
   }
   &__player-box {
     display: flex;
+    display: -moz-box;
+    display:-ms-flexbox;
+    display:-webkit-flex;
     align-items: flex-start;
     padding-top: 35px;
   }
@@ -166,6 +175,9 @@
           position: relative;
           top: -35px;
           display: flex;
+          display: -moz-box;
+          display:-ms-flexbox;
+          display:-webkit-flex;
           justify-content: center;
           margin:0px;
           padding:0px;
@@ -199,11 +211,13 @@
 
     .radio-box{
       position: relative;
-      flex: 1;
       height: calc(100vh - 107px);
       align-items: center;
       align-content: center;
       display: flex;
+      display: -moz-box;
+      display:-ms-flexbox;
+      display:-webkit-flex;
       width: 100%;
       justify-content: center;
     }

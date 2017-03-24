@@ -29,7 +29,7 @@ class Home extends React.Component {
   }
   componentDidMount() {
     $(window).scroll(function () {
-      if ($(window).scrollTop() > 150)
+      if (($(window).scrollTop() > 150) || ($(window).width() <= 767))
         $('.scrollDown').css('display', 'none');
       else
         $('.scrollDown').css('display', 'inline');
