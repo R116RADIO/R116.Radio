@@ -110,7 +110,9 @@
     color: $radio-col-loud;
   }
 }
-
+.hidden-desktop {
+  display: none;
+}
 .quality-wrapper {
   &.hidden-desktop {
     display: none;
@@ -167,6 +169,9 @@
 }
 
 @media (max-width: 767px) {
+  .hidden-desktop {
+    display: block;
+  }
   #landscape{
     .radio-box-all{
       .radio-box{

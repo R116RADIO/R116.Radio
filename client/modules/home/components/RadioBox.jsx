@@ -14,8 +14,6 @@ class RadioBox extends React.Component {
       if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent))
         this.setState({heightWindow: $(window).height() - 89});
 
-
-
     // initialize window resize
     $(window).resize(() => {
       if ($(window).width() <= 767)

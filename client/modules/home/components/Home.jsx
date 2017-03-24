@@ -29,7 +29,9 @@ class Home extends React.Component {
   }
   componentDidMount() {
     $(window).scroll(function () {
-      if (($(window).scrollTop() > 150) || ($(window).width() <= 767))
+      if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent))
+        $('.scrollDown').css('display', 'none');
+      else if (($(window).scrollTop() > 150) || ($(window).width() <= 767))
         $('.scrollDown').css('display', 'none');
       else
         $('.scrollDown').css('display', 'inline');
@@ -40,21 +42,30 @@ class Home extends React.Component {
   render() {
     return (
       <div className="home-page">
-        <Header quality={this.state.quality} changeQuality={this.changeQuality} />
-        <div className="radio-box-all">
-          <RadioBox
-            quality={this.state.quality}
-            currentProgram={this.state.currentProgram}
-            changeQuality={this.changeQuality} />
+        <div className="onepage">
+          <Header quality={this.state.quality} changeQuality={this.changeQuality} />
+            <div className="radio-box-all">
+              <RadioBox
+                quality={this.state.quality}
+                currentProgram={this.state.currentProgram}
+                changeQuality={this.changeQuality} />
+              <ProgramSchedule
+                currentProgram={this.state.currentProgram}
+                changeCurrentProgram={this.changeCurrentProgram} />
+              <a href="#contacForm" className="scrollDown bounce">
+                <img src="img/md-down.svg"/>
+              </a>
+            </div>
+        </div>
+        <div className="onePage hidden-desktop">
           <ProgramSchedule
             currentProgram={this.state.currentProgram}
             changeCurrentProgram={this.changeCurrentProgram} />
-          <a href="#contacForm" className="scrollDown bounce">
-            <img src="img/md-down.svg"/>
-          </a>
         </div>
-        <Contact />
-        <Footer />
+        <div className="onePage">
+          <Contact />
+          <Footer />
+        </div>
       </div>
     );
   }
