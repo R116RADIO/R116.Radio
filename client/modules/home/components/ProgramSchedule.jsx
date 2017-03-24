@@ -11,6 +11,7 @@ class ProgramSchedule extends Component {
   }
 
   componentDidMount() {
+    this.mounted = true;
     const programSchedule = ENUMS.PROGRAM_SCHEDULE;
     const utcOffset = moment().utcOffset();
 
@@ -21,18 +22,22 @@ class ProgramSchedule extends Component {
       program.time.from = from;
       program.time.to = to;
     });
+    console.log(this.mounted);
+    if (this.mounted)
+      this.setState({
+        programSchedule
+      }, () => {
+        setInterval(this.setCurrentProgram, 1000);
+      });
 
-    this.setState({
-      programSchedule
-    }, () => {
-      setInterval(this.setCurrentProgram, 1000);
-    });
   }
 
   isActiveSchedule({from, to}) {
     return moment().isBetween(from, to);
   }
-
+  componentWillUnmount() {
+    this.mounted = false;
+  }
   setCurrentProgram() {
     let currentProgram = '';
 

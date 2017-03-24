@@ -213,7 +213,9 @@
     &:before{
       display: none
     }
-
+    .home-page__program-schedule{
+      display: none
+    }
     .radio-box{
       position: relative;
       height: calc(100vh - 107px);
