@@ -141,6 +141,14 @@
     font-size: 12px;
     padding: 60px 0px 10px 60px;
   }
+  .Section-schedule{
+    background-color:#000;
+    .home-page{
+      &__program-schedule{
+        margin:0px;
+      }
+    }
+  }
 }
 
 @media (max-width: 767px) {
@@ -182,7 +190,6 @@
 }
 
 @media (max-width: 480px) {
-
   .home-page {
     &__contact {
       &--form {

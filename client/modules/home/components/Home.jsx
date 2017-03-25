@@ -12,7 +12,7 @@ class Home extends React.Component {
     this.state = {
       quality: 32,
       currentProgram: '',
-      mounted: true
+      fullScreen: false
     };
     this.changeQuality = this.changeQuality.bind(this);
     this.changeCurrentProgram = this.changeCurrentProgram.bind(this);
@@ -45,28 +45,21 @@ class Home extends React.Component {
     });
   }
   resizePage() {
-    if (this) {
-      if ($(window).width() <= 767 || /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent))
-        this.setState({
-          anchors: ['playMusic', 'programSchedule', 'contacForm'],
-          fullScreen: true
-        });
-      else
-        this.setState({
-          anchors: ['playMusic', 'programSchedule'],
-          fullScreen: false
-        });
-
-      this.setState({mounted: !this.state.mounted});
-      setTimeout(() => {
-        this.setState({mounted: !this.state.mounted});
-      }, 200);
+    if ($(window).width() <= 767 || (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent))){
+      this.setState({
+        fullScreen: true
+      });
+    }else{
+      $('body').removeAttr('style');
+      this.setState({
+        fullScreen: false
+      });
     }
   }
 
   render() {
     const options = {
-      anchors: this.state.anchors,
+      anchors: ['sectionOne', 'sectionTwo', 'sectionThree'],
       scrollBar: false,
       verticalAlign: true,
       arrowNavigation: false
@@ -75,7 +68,6 @@ class Home extends React.Component {
     return (
       <div className="home-page">
         {
-          this.state.mounted ?
             this.state.fullScreen ?
               <SectionsContainer {...options}>
                 <Section>
@@ -85,15 +77,12 @@ class Home extends React.Component {
                         quality={this.state.quality}
                         currentProgram={this.state.currentProgram}
                         changeQuality={this.changeQuality} />
-                      <ProgramSchedule
-                        currentProgram={this.state.currentProgram}
-                        changeCurrentProgram={this.changeCurrentProgram} />
                       {/* <a href="#contacForm" className="scrollDown bounce">
                         <img src="img/md-down.svg"/>
                       </a>*/}
                     </div>
                 </Section>
-                <Section>
+                <Section className="Section-schedule">
                   <ProgramSchedule
                     currentProgram={this.state.currentProgram}
                     changeCurrentProgram={this.changeCurrentProgram} />
@@ -103,9 +92,8 @@ class Home extends React.Component {
                     <RadioFooter />
                 </Section>
               </SectionsContainer> :
-              <SectionsContainer {...options}>
-                <Section>
-                    <RadioHeader quality={this.state.quality} changeQuality={this.changeQuality} />
+                <div>
+                  <RadioHeader quality={this.state.quality} changeQuality={this.changeQuality} />
                     <div className="radio-box-all">
                       <RadioBox
                         quality={this.state.quality}
@@ -118,13 +106,10 @@ class Home extends React.Component {
                         <img src="img/md-down.svg"/>
                       </a>*/}
                     </div>
-                </Section>
-                <Section>
                     <Contact />
                     <RadioFooter />
-                </Section>
-              </SectionsContainer> :
-          null
+                </div>
+
         }
       </div>
     );

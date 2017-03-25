@@ -22,7 +22,7 @@ class ProgramSchedule extends Component {
       program.time.from = from;
       program.time.to = to;
     });
-    console.log(this.mounted);
+
     if (this.mounted)
       this.setState({
         programSchedule
