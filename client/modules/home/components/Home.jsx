@@ -29,10 +29,6 @@ class Home extends React.Component {
     });
   }
   componentDidMount() {
-    setTimeout(function () {
-      $('#fullpage').fullpage();
-    }, 100);
-
     this.resizePage();
     // $(window).scroll(function () {
     //   if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent))
@@ -48,19 +44,35 @@ class Home extends React.Component {
     });
   }
   resizePage() {
-    if ($(window).width() <= 767 || (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent))) {
-      if ($('#fullpage').hasClass('fp-destroyed'))
-        $('#fullpage').fullpage();
+    if ($(window).width() <= 768 || (/Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)))
       this.setState({
         fullScreen: true
       });
-    } else {
-      $.fn.fullpage.destroy('all');
-      $('body').removeAttr('style');
+    else
       this.setState({
         fullScreen: false
       });
-    }
+
+  }
+
+  componentWillUpdate(newProps, newState) {
+    if (this.state.fullScreen === true && newState.fullScreen === false)
+      $.fn.fullpage.destroy('all');
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.fullScreen !== this.state.fullScreen)
+      if (this.state.fullScreen) {
+        const fullPage = $('#fullpage');
+
+        // if (fullPage.hasClass('fp-destroyed'))
+        fullPage.fullpage();
+      } else {
+        // $.fn.fullpage.destroy('all');
+        // $('body').removeAttr('style');
+      }
+
+
   }
 
   render() {
