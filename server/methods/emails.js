@@ -12,9 +12,9 @@ export default function () {
     'emails.send'(fromUser, subject, text) {
       this.unblock();
       check([fromUser, subject, text], [String]);
-      const from = '<Radio> admin@zigvy.com';
+      const from = fromUser;
       const to = CONST.EMAIL.TO_ADMIN;
-      const mailContent = `${fromUser}: ${text}`;
+      const mailContent = `Email has been sent from ${fromUser}: \n ${text}`;
 
       Email.send({
         from,

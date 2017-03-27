@@ -1,3 +1,10 @@
 Meteor.startup(() => {
-  process.env.MAIL_URL = 'smtp://SMTP_Injection:56579affb5f4f31786363a49cc8ecd120737a4bc@smtp.sparkpostmail.com:587';
+  const smtp = {
+    username: 'r116radio@gmail.com',
+    password: 'J#suschr1st2',
+    server: 'smtp.gmail.com',
+    port: 465
+  };
+
+  process.env.MAIL_URL = 'smtp://' + encodeURIComponent(smtp.username) + ':' + encodeURIComponent(smtp.password) + '@' + encodeURIComponent(smtp.server) + ':' + smtp.port;
 });

@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+require('bootstrap-sass/assets/javascripts/bootstrap/button.js');
 
 class ContactForm extends Component {
   constructor(props) {
@@ -16,14 +17,21 @@ class ContactForm extends Component {
     e.preventDefault();
     const {from, subject, text} = this.state;
 
+    $(this.refs.sendEmailBtn).button('loading');
+
     if (GLOBAL.checkEmail(from)) {
       this.setState({error: ''});
-      Meteor.call('emails.send', from, subject, text);
-      this.setState({
-        from: '',
-        subject: '',
-        text: ''
+      Meteor.call('emails.send', from, subject, text, (err) => {
+        if (err)
+          alert(err.reason);
+        this.setState({
+          from: '',
+          subject: '',
+          text: ''
+        });
+        $(this.refs.sendEmailBtn).button('reset');
       });
+
     } else
       this.setState({error: 'Email invalid'});
   }
@@ -52,7 +60,12 @@ class ContactForm extends Component {
             <label htmlFor="message">Enter your message</label>
             <textarea id="message" rows="6" required value={this.state.text} onChange={this.handleInputChange.bind(this, 'text')} placeholder="Enter your message"></textarea>
           </div>
-          <button type="submit" form="form-contact" value="Submit">Send your message</button>
+          <button
+            ref="sendEmailBtn"
+            data-loading-text="Sending..."
+            type="submit"
+            form="form-contact"
+            value="Submit">Send your message</button>
         </form>
       </div>
     );
