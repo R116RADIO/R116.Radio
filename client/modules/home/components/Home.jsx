@@ -78,51 +78,50 @@ class Home extends React.Component {
   render() {
     return (
       <div className="home-page">
-        {
-          this.state.fullScreen ?
-            <div id="fullpage">
-              <div className="section active">
-                  <RadioHeader quality={this.state.quality} changeQuality={this.changeQuality} />
-                  <div className="radio-box-all">
-                    <RadioBox
-                      quality={this.state.quality}
-                      currentProgram={this.state.currentProgram}
-                      changeQuality={this.changeQuality} />
-                    {/* <a href="#contacForm" className="scrollDown bounce">
-                      <img src="img/md-down.svg"/>
-                    </a>*/}
-                  </div>
-              </div>
-              <div className="section customSchedule">
-                <ProgramSchedule
-                  currentProgram={this.state.currentProgram}
-                  changeCurrentProgram={this.changeCurrentProgram} />
-              </div>
-              <div className="section fp-auto-height-responsive">
-                  <Contact />
-              </div>
-              <div className="section fp-auto-height">
-                  <RadioFooter />
-              </div>
-            </div> :
-            <div>
+        <div id="fullpage">
+          <div className="section active">
               <RadioHeader quality={this.state.quality} changeQuality={this.changeQuality} />
-                <div className="radio-box-all">
-                  <RadioBox
-                    quality={this.state.quality}
-                    currentProgram={this.state.currentProgram}
-                    changeQuality={this.changeQuality} />
+              <div className="radio-box-all">
+                <RadioBox
+                  quality={this.state.quality}
+                  currentProgram={this.state.currentProgram}
+                  changeQuality={this.changeQuality} />
+                {/* <a href="#contacForm" className="scrollDown bounce">
+                  <img src="img/md-down.svg"/>
+                </a>*/}
+
+                {!this.state.fullScreen ?
                   <ProgramSchedule
                     currentProgram={this.state.currentProgram}
-                    changeCurrentProgram={this.changeCurrentProgram} />
-                  {/* <a href="#contacForm" className="scrollDown bounce">
-                    <img src="img/md-down.svg"/>
-                  </a>*/}
-                </div>
-                <Contact />
-                <RadioFooter />
+                    changeCurrentProgram={this.changeCurrentProgram} /> : null
+                }
               </div>
-        }
+              {!this.state.fullScreen ?
+                <Contact /> : null
+              }
+
+              {!this.state.fullScreen ?
+                <RadioFooter /> : null
+              }
+          </div>
+          <div className="section customSchedule">
+            {this.state.fullScreen ?
+              <ProgramSchedule
+                currentProgram={this.state.currentProgram}
+                changeCurrentProgram={this.changeCurrentProgram} /> : null
+            }
+          </div>
+          <div className="section fp-auto-height-responsive">
+            {this.state.fullScreen ?
+              <Contact /> : null
+            }
+          </div>
+          <div className="section fp-auto-height">
+            {this.state.fullScreen ?
+              <Contact /> : null
+            }
+          </div>
+        </div>
       </div>
     );
   }

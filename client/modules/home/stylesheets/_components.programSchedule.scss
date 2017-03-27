@@ -8,6 +8,19 @@
 .home-page {
   background: $radio-col-blocked;
   color: $radio-col-light;
+
+  &--desktop {
+    .home-page__container--fullpage{
+      display: none;
+    }
+  }
+
+  &--fullpage{
+    .home-page__container--desktop{
+      display: none;
+    }
+  }
+
   &__program-schedule {
     ul {
       list-style: none;
