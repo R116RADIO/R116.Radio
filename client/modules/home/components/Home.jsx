@@ -118,7 +118,7 @@ class Home extends React.Component {
           </div>
           <div className="section fp-auto-height">
             {this.state.fullScreen ?
-              <Contact /> : null
+              <RadioFooter /> : null
             }
           </div>
         </div>
