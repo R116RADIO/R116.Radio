@@ -1,16 +1,17 @@
 import React from 'react';
-import Header from './Header.jsx';
+import RadioHeader from './Header.jsx';
 import RadioBox from './RadioBox.jsx';
 import ProgramSchedule from './ProgramSchedule.jsx';
 import Contact from './Contact.jsx';
-import Footer from './Footer.jsx';
+import RadioFooter from './Footer.jsx';
 
 class Home extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       quality: 32,
-      currentProgram: ''
+      currentProgram: '',
+      fullScreen: false
     };
     this.changeQuality = this.changeQuality.bind(this);
     this.changeCurrentProgram = this.changeCurrentProgram.bind(this);
@@ -28,44 +29,88 @@ class Home extends React.Component {
     });
   }
   componentDidMount() {
-    $(window).scroll(function () {
-      if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent))
-        $('.scrollDown').css('display', 'none');
-      else if (($(window).scrollTop() > 150) || ($(window).width() <= 767))
-        $('.scrollDown').css('display', 'none');
-      else
-        $('.scrollDown').css('display', 'inline');
+    setTimeout(function () {
+      $('#fullpage').fullpage();
+    }, 100);
 
+    this.resizePage();
+    // $(window).scroll(function () {
+    //   if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent))
+    //     $('.scrollDown').css('display', 'none');
+    //   else if (($(window).scrollTop() > 150) || ($(window).width() <= 767))
+    //     $('.scrollDown').css('display', 'none');
+    //   else
+    //     $('.scrollDown').css('display', 'inline');
+    //
+    // });
+    $(window).resize(() => {
+      this.resizePage();
     });
+  }
+  resizePage() {
+    if ($(window).width() <= 767 || (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent))) {
+      if ($('#fullpage').hasClass('fp-destroyed'))
+        $('#fullpage').fullpage();
+      this.setState({
+        fullScreen: true
+      });
+    } else {
+      $.fn.fullpage.destroy('all');
+      $('body').removeAttr('style');
+      this.setState({
+        fullScreen: false
+      });
+    }
   }
 
   render() {
     return (
       <div className="home-page">
-        <div className="onepage">
-          <Header quality={this.state.quality} changeQuality={this.changeQuality} />
-            <div className="radio-box-all">
-              <RadioBox
-                quality={this.state.quality}
-                currentProgram={this.state.currentProgram}
-                changeQuality={this.changeQuality} />
-              <ProgramSchedule
-                currentProgram={this.state.currentProgram}
-                changeCurrentProgram={this.changeCurrentProgram} />
-              <a href="#contacForm" className="scrollDown bounce">
-                <img src="img/md-down.svg"/>
-              </a>
-            </div>
-        </div>
-        <div className="onePage hidden-desktop">
-          <ProgramSchedule
-            currentProgram={this.state.currentProgram}
-            changeCurrentProgram={this.changeCurrentProgram} />
-        </div>
-        <div className="onePage">
-          <Contact />
-          <Footer />
-        </div>
+        {
+          this.state.fullScreen ?
+            <div id="fullpage">
+              <div className="section active">
+                  <RadioHeader quality={this.state.quality} changeQuality={this.changeQuality} />
+                  <div className="radio-box-all">
+                    <RadioBox
+                      quality={this.state.quality}
+                      currentProgram={this.state.currentProgram}
+                      changeQuality={this.changeQuality} />
+                    {/* <a href="#contacForm" className="scrollDown bounce">
+                      <img src="img/md-down.svg"/>
+                    </a>*/}
+                  </div>
+              </div>
+              <div className="section customSchedule">
+                <ProgramSchedule
+                  currentProgram={this.state.currentProgram}
+                  changeCurrentProgram={this.changeCurrentProgram} />
+              </div>
+              <div className="section fp-auto-height-responsive">
+                  <Contact />
+              </div>
+              <div className="section fp-auto-height">
+                  <RadioFooter />
+              </div>
+            </div> :
+            <div>
+              <RadioHeader quality={this.state.quality} changeQuality={this.changeQuality} />
+                <div className="radio-box-all">
+                  <RadioBox
+                    quality={this.state.quality}
+                    currentProgram={this.state.currentProgram}
+                    changeQuality={this.changeQuality} />
+                  <ProgramSchedule
+                    currentProgram={this.state.currentProgram}
+                    changeCurrentProgram={this.changeCurrentProgram} />
+                  {/* <a href="#contacForm" className="scrollDown bounce">
+                    <img src="img/md-down.svg"/>
+                  </a>*/}
+                </div>
+                <Contact />
+                <RadioFooter />
+              </div>
+        }
       </div>
     );
   }

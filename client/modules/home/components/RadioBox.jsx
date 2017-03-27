@@ -10,25 +10,24 @@ class RadioBox extends React.Component {
     };
   }
   componentDidMount() {
-    if ($(window).width() <= 767)
-      if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent))
-        this.setState({heightWindow: $(window).height() - 89});
-
-    // initialize window resize
-    $(window).resize(() => {
-      if ($(window).width() <= 767)
-        if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent))
-          this.setState({heightWindow: $(window).height() - 89});
-    });
+    // if ($(window).width() <= 767)
+    //   if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent))
+    //     this.setState({heightWindow: $(window).height() - 89});
+    //
+    // // initialize window resize
+    // $(window).resize(() => {
+    //   if ($(window).width() <= 767)
+    //     if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent))
+    //       this.setState({heightWindow: $(window).height() - 89});
+    // });
   }
   render() {
-    const {heightWindow} = this.state;
-    const styleHight = {
-      height: heightWindow
-    };
-
+    // const {heightWindow} = this.state;
+    // const styleHight = {
+    //   height: heightWindow
+    // };
     return (
-      <div className="radio-box" style={styleHight}>
+      <div className="radio-box">
         <div className="inner">
           <RadioPlayer
             quality={this.props.quality}

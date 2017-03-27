@@ -141,19 +141,47 @@
     font-size: 12px;
     padding: 60px 0px 10px 60px;
   }
+
 }
 
 @media (max-width: 767px) {
+  #landscape{
+    .home-page {
+      &__program-schedule {
+        padding-top: 0px;
+        &--item{
+          margin: 0px;
+        }
+        &--title {
+          padding-top: 0px;
+          margin: 0px;
+        }
+        ul {
+          padding-bottom: 10px;
+        }
+      }
+
+    }
+  }
   .home-page {
+    .customSchedule{
+      background: #000;
+      .home-page__program-schedule{
+        height: calc(100vh - 30px);
+      }
+    }
     &__program-schedule {
+      height: calc(100vh);
       padding: 0 15px;
-      margin-top: 45px;
       flex: 1;
       ul {
         margin: 0 auto;
         padding-bottom: 30px;
       }
       &--title {
+        width: 300px;
+        margin: 0 auto;
+        padding-top: 45px;
         font-size: 24px;
       }
       &--download {

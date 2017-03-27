@@ -199,8 +199,8 @@
     }
   }
   .radio-box-all {
-    height: auto;
-    min-height: auto;
+    height: calc(100% - 89px);
+    min-height: 50px;
     flex-flow: column;
     padding: 0;
     margin-top: 0;
@@ -216,7 +216,7 @@
 
     .radio-box{
       position: relative;
-      height: calc(100vh - 107px);
+      height: calc(100%);
       align-items: center;
       align-content: center;
       display: flex;
@@ -230,7 +230,7 @@
   .radio-player {
     width: 100%;
     max-width: 767px;
-    margin: 0 auto 50px;
+    margin: 0 auto 0px;
     padding: 0 15px;
     &__detail{
       span{
