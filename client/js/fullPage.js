@@ -1705,9 +1705,9 @@
             // stopping HTML5 media elements
       panel.find('video, audio').each(function () {
         var element = $(this).get(0);
-
-        if (!element.hasAttribute('data-keepplaying') && typeof element.pause === 'function')
-          element.pause();
+        //
+        // if (!element.hasAttribute('data-keepplaying') && typeof element.pause === 'function')
+        //   element.pause();
 
       });
 
