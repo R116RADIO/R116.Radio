@@ -29,7 +29,7 @@ module.exports = {
     env: {
       // If you are using ssl, it needs to start with https://
       PORT: 80,
-      ROOT_URL: 'http://52.25.85.16',
+      ROOT_URL: 'http://www.r116radio.com/',
       MONGO_URL: 'mongodb://localhost/radio_app',
     },
 
@@ -42,7 +42,7 @@ module.exports = {
     // for your app to start
     // Add 30 seconds if the server has 512mb of ram
     // And 30 more if you have binary npm dependencies.
-    deployCheckWaitTime: 120,
+    deployCheckWaitTime: 90,
     deployCheckPort: 80,
 
     // Show progress bar while uploading bundle to server
