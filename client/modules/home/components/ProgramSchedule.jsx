@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import moment from 'moment';
 
 class ProgramSchedule extends Component {
@@ -11,16 +11,21 @@ class ProgramSchedule extends Component {
   }
 
   componentDidMount() {
-    const programSchedule = ENUMS.PROGRAM_SCHEDULE;
+    let programSchedule = ENUMS.PROGRAM_SCHEDULE;
     const utcOffset = moment().utcOffset();
+    const DayOfWeek = moment().day();
+    const todayPrograms = (_.filter(programSchedule,
+    (program) => program.dayOfWeek === DayOfWeek))[0].programs;
 
-    _.each(programSchedule, (program) => {
-      const from = moment(program.time.from, 'HH:mm').add(utcOffset, 'm');
-      const to = moment(program.time.to, 'HH:mm').add(utcOffset, 'm');
+    _.each(todayPrograms, (program) => {
+      const from = moment(program.from, 'HH:mm').add(utcOffset, 'm');
+      const to = moment(program.to, 'HH:mm').add(utcOffset, 'm');
 
-      program.time.from = from;
-      program.time.to = to;
+      program.from = from;
+      program.to = to;
     });
+
+    programSchedule = todayPrograms;
 
     this.setState({
       programSchedule
@@ -37,8 +42,8 @@ class ProgramSchedule extends Component {
     let currentProgram = '';
 
     _.each(this.state.programSchedule, (program) => {
-      if (this.isActiveSchedule(program.time))
-        currentProgram = program.program;
+      if (this.isActiveSchedule(program))
+        currentProgram = program.name;
     });
 
     this.props.changeCurrentProgram(currentProgram);
@@ -54,12 +59,12 @@ class ProgramSchedule extends Component {
           {
             _.map(this.state.programSchedule, (program, index) => {
               return (
-                <li className={'home-page__program-schedule--item' + (program.program === this.props.currentProgram ? programActive : '')} key={index}>
+                <li className={'home-page__program-schedule--item' + (program.name === this.props.currentProgram ? programActive : '')} key={index}>
                   <div className="home-page__program-schedule--item--time">
-                    {program.time.from.format('HH:mm')} - {program.time.to.format('HH:mm')}
+                    {program.from.format('HH:mm')} - {program.to.format('HH:mm')}
                   </div>
                   <div className="home-page__program-schedule--item--program">
-                    {program.program}
+                    {program.name}
                   </div>
                 </li>
               );
