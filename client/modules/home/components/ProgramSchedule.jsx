@@ -14,8 +14,8 @@ class ProgramSchedule extends Component {
     let programSchedule = ENUMS.PROGRAM_SCHEDULE;
     const utcOffset = moment().utcOffset();
     const DayOfWeek = moment().day();
-    const todayPrograms = (_.filter(programSchedule,
-    (program) => program.dayOfWeek === DayOfWeek))[0].programs;
+    const todayPrograms = JSON.parse(JSON.stringify(_.filter(programSchedule,
+    (program) => program.dayOfWeek === DayOfWeek)[0].programs));
 
     _.each(todayPrograms, (program) => {
       const from = moment(program.from, 'HH:mm').add(utcOffset, 'm');
