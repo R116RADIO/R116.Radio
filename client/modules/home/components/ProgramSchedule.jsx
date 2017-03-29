@@ -12,7 +12,7 @@ class ProgramSchedule extends Component {
 
   componentDidMount() {
     let programSchedule = ENUMS.PROGRAM_SCHEDULE;
-    const utcOffset = moment().utcOffset();
+    // const utcOffset = moment().utcOffset();
     const DayOfWeek = moment().day();
     const todayPrograms = (_.filter(programSchedule,
     (program) => program.dayOfWeek === DayOfWeek))[0].programs;
