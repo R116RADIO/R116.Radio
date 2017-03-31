@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import moment from 'moment';
+import React, {Component} from 'react';
+import moment from 'moment-timezone';
 
 class ProgramSchedule extends Component {
   constructor(props) {
@@ -24,6 +24,7 @@ class ProgramSchedule extends Component {
     _.each(Programs, (program) => {
       let day = 0;
 
+<<<<<<< HEAD
       if (program.dayOfWeek === Yesterday)
         day = -1;
       else if (program.dayOfWeek === Tomorrow)
@@ -31,6 +32,14 @@ class ProgramSchedule extends Component {
       _.each(program.programs, (_program) => {
         const from = moment(_program.from, 'HH:mm').add(utcOffset, 'm').add(day, 'day');
         const to = moment(_program.to, 'HH:mm').add(utcOffset, 'm').add(day, 'day');
+=======
+    _.each(todayPrograms, (program) => {
+      let from = moment.tz(program.from, 'HH:mm', 'Eire');
+      let to = moment.tz(program.to, 'HH:mm', 'Eire');
+
+      from = from.clone().tz(moment.tz.guess());
+      to = to.clone().tz(moment.tz.guess());
+>>>>>>> d88232c03f260897a7b71a398e589a709910a386
 
         _program.from = from;
         _program.to = to;
