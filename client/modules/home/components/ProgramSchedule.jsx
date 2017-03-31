@@ -14,15 +14,40 @@ class ProgramSchedule extends Component {
     let programSchedule = ENUMS.PROGRAM_SCHEDULE;
     const utcOffset = moment().utcOffset();
     const DayOfWeek = moment().day();
-    const todayPrograms = JSON.parse(JSON.stringify(_.filter(programSchedule,
-    (program) => program.dayOfWeek === DayOfWeek)[0].programs));
+    const dayBefore = moment().subtract(1, 'day').day();
+    const threeDays = JSON.parse(JSON.stringify(_.filter(programSchedule,
+    (program) => (program.dayOfWeek === DayOfWeek) || (program.dayOfWeek === dayBefore))));
+    let programs = [];
+    for (let i = 0; i < threeDays.length; i++)
+      programs.push(threeDays[i].programs);
 
-    _.each(todayPrograms, (program) => {
-      const from = moment(program.from, 'HH:mm').add(utcOffset, 'm');
-      const to = moment(program.to, 'HH:mm').add(utcOffset, 'm');
+    let todayPrograms = [], i = 0, j = 0;
 
-      program.from = from;
-      program.to = to;
+    _.each(programs, (program) => {
+      j++;
+      let check = true;
+      _.each(program, (program) => {
+        let from = (j === 1) ? moment(program.from, 'HH:mm').subtract(1, 'day').add(utcOffset, 'm') : moment(program.from, 'HH:mm').add(utcOffset, 'm');
+        let to = (j === 1) ? moment(program.to, 'HH:mm').subtract(1, 'day').add(utcOffset, 'm') : moment(program.to, 'HH:mm').add(utcOffset, 'm');
+
+        if (to.day() < from.day()) {
+          to.add(1, 'day');
+        }
+        if (j === 1) {
+          if ((from.day() < to.day()) || (i === 1)) {
+            program.from = from;
+            program.to = to;
+            todayPrograms.push(program);
+            i = 1;
+          }
+        } else {
+          if ((from.day() === to.day()) && (check === true)) {
+            program.from = from;
+            program.to = to;
+            todayPrograms.push(program);
+          } else check = false;
+        }
+      })
     });
 
     programSchedule = todayPrograms;
