@@ -5,18 +5,29 @@ class ProgramSchedule extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      programSchedule: []
+      programSchedule: [],
+      today: null
     };
     this.setCurrentProgram = this.setCurrentProgram.bind(this);
   }
 
   componentDidMount() {
+
+
+    this.setState({
+      programSchedule: this.updateSchedule()
+    }, () => {
+      setInterval(this.setCurrentProgram, 600000);
+    });
+  }
+
+  updateSchedule() {
     let programSchedule = ENUMS.PROGRAM_SCHEDULE;
     const utcOffset = moment().utcOffset();
     const DayOfWeek = moment().day();
     const dayBefore = moment().subtract(1, 'day').day();
     const threeDays = JSON.parse(JSON.stringify(_.filter(programSchedule,
-    (program) => (program.dayOfWeek === DayOfWeek) || (program.dayOfWeek === dayBefore))));
+      (program) => (program.dayOfWeek === DayOfWeek) || (program.dayOfWeek === dayBefore))));
     let programs = [];
     for (let i = 0; i < threeDays.length; i++)
       programs.push(threeDays[i].programs);
@@ -50,13 +61,9 @@ class ProgramSchedule extends Component {
       })
     });
 
-    programSchedule = todayPrograms;
+    this.setState({today: DayOfWeek});
 
-    this.setState({
-      programSchedule
-    }, () => {
-      setInterval(this.setCurrentProgram, 1000);
-    });
+    return todayPrograms;
   }
 
   isActiveSchedule({from, to}) {
@@ -66,6 +73,8 @@ class ProgramSchedule extends Component {
   setCurrentProgram() {
     let currentProgram = '';
 
+    if (this.state.today !== moment().day())
+      this.setState({programSchedule: this.updateSchedule()});
     _.each(this.state.programSchedule, (program) => {
       if (this.isActiveSchedule(program))
         currentProgram = program.name;
