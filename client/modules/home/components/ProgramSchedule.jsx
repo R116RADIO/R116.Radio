@@ -10,22 +10,40 @@ class ProgramSchedule extends Component {
     this.setCurrentProgram = this.setCurrentProgram.bind(this);
   }
 
-  componentDidMount() {
-    let programSchedule = ENUMS.PROGRAM_SCHEDULE;
+  updateSchedule() {
+    const programSchedule = ENUMS.PROGRAM_SCHEDULE;
     const utcOffset = moment().utcOffset();
-    const DayOfWeek = moment().day();
-    const todayPrograms = JSON.parse(JSON.stringify(_.filter(programSchedule,
-    (program) => program.dayOfWeek === DayOfWeek)[0].programs));
+    const Today = moment().day();
+    const Yesterday = moment().subtract(1, 'day').day();
+    const Tomorrow = moment().add(1, 'day').day();
+    const Programs = _.filter(programSchedule,
+      (program) => program.dayOfWeek === Yesterday ||
+        program.dayOfWeek === Today ||
+        program.dayOfWeek === Tomorrow);
 
-    _.each(todayPrograms, (program) => {
-      const from = moment(program.from, 'HH:mm').add(utcOffset, 'm');
-      const to = moment(program.to, 'HH:mm').add(utcOffset, 'm');
+    _.each(Programs, (program) => {
+      let day = 0;
 
-      program.from = from;
-      program.to = to;
+      if (program.dayOfWeek === Yesterday)
+        day = -1;
+      else if (program.dayOfWeek === Tomorrow)
+        day = 1;
+      _.each(program.programs, (_program) => {
+        const from = moment(_program.from, 'HH:mm').add(utcOffset, 'm').add(day, 'day');
+        const to = moment(_program.to, 'HH:mm').add(utcOffset, 'm').add(day, 'day');
+
+        _program.from = from;
+        _program.to = to;
+      });
     });
+    let todayPrograms = _.flatten(_.map(Programs, (program) => program.programs));
 
-    programSchedule = todayPrograms;
+    todayPrograms = _.filter(todayPrograms, (program => program.from.day() === Today));
+    return todayPrograms;
+  }
+
+  componentDidMount() {
+    const programSchedule = this.updateSchedule();
 
     this.setState({
       programSchedule
@@ -34,7 +52,7 @@ class ProgramSchedule extends Component {
     });
   }
 
-  isActiveSchedule({from, to}) {
+  isActiveSchedule({ from, to }) {
     return moment().isBetween(from, to);
   }
 
