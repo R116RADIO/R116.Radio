@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import moment from 'moment';
 
 class ProgramSchedule extends Component {
@@ -31,6 +31,9 @@ class ProgramSchedule extends Component {
       _.each(program.programs, (_program) => {
         const from = moment(_program.from, 'HH:mm').add(utcOffset, 'm').add(day, 'day');
         const to = moment(_program.to, 'HH:mm').add(utcOffset, 'm').add(day, 'day');
+
+        if (to.day() < from.day())
+          to.add(1, 'day');
 
         _program.from = from;
         _program.to = to;
