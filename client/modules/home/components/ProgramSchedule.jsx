@@ -5,7 +5,8 @@ class ProgramSchedule extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      programSchedule: []
+      programSchedule: [],
+      Today: -1
     };
     this.setCurrentProgram = this.setCurrentProgram.bind(this);
   }
@@ -16,10 +17,10 @@ class ProgramSchedule extends Component {
     const Today = moment().day();
     const Yesterday = moment().subtract(1, 'day').day();
     const Tomorrow = moment().add(1, 'day').day();
-    const Programs = _.filter(programSchedule,
+    const Programs = JSON.parse(JSON.stringify(_.filter(programSchedule,
       (program) => program.dayOfWeek === Yesterday ||
         program.dayOfWeek === Today ||
-        program.dayOfWeek === Tomorrow);
+        program.dayOfWeek === Tomorrow)));
 
     _.each(Programs, (program) => {
       let day = 0;
@@ -42,26 +43,27 @@ class ProgramSchedule extends Component {
     let todayPrograms = _.flatten(_.map(Programs, (program) => program.programs));
 
     todayPrograms = _.filter(todayPrograms, (program => program.from.day() === Today));
+    this.setState({Today});
     return todayPrograms;
   }
 
   componentDidMount() {
     const programSchedule = this.updateSchedule();
 
-    this.setState({
-      programSchedule
-    }, () => {
+    this.setState({programSchedule}, () => {
       setInterval(this.setCurrentProgram, 1000);
     });
   }
 
-  isActiveSchedule({ from, to }) {
+  isActiveSchedule({from, to}) {
     return moment().isBetween(from, to);
   }
 
   setCurrentProgram() {
     let currentProgram = '';
 
+    if (this.state.Today !== moment().day())
+      this.setState({programSchedule: this.updateSchedule()});
     _.each(this.state.programSchedule, (program) => {
       if (this.isActiveSchedule(program))
         currentProgram = program.name;
