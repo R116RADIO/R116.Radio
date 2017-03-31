@@ -17,7 +17,7 @@ class ProgramSchedule extends Component {
     this.setState({
       programSchedule: this.updateSchedule()
     }, () => {
-      setInterval(this.setCurrentProgram, 600000);
+      setInterval(this.setCurrentProgram, 1000);
     });
   }
 
