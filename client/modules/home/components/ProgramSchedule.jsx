@@ -29,8 +29,14 @@ class ProgramSchedule extends Component {
     const threeDays = JSON.parse(JSON.stringify(_.filter(programSchedule,
       (program) => (program.dayOfWeek === DayOfWeek) || (program.dayOfWeek === dayBefore))));
     let programs = [];
-    for (let i = 0; i < threeDays.length; i++)
-      programs.push(threeDays[i].programs);
+    if (dayBefore === 6 && DayOfWeek === 0) {
+      for (let i = threeDays.length - 1; i >= 0; i--)
+        programs.push(threeDays[i].programs);
+    } else {
+      for (let i = 0; i < threeDays.length; i++)
+        programs.push(threeDays[i].programs);
+
+    }
 
     let todayPrograms = [], i = 0, j = 0;
 
