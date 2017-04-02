@@ -41,11 +41,11 @@ class ProgramSchedule extends Component {
         let from = (j === 1) ? moment(program.from, 'HH:mm').subtract(1, 'day').add(utcOffset, 'm') : moment(program.from, 'HH:mm').add(utcOffset, 'm');
         let to = (j === 1) ? moment(program.to, 'HH:mm').subtract(1, 'day').add(utcOffset, 'm') : moment(program.to, 'HH:mm').add(utcOffset, 'm');
 
-        if (to.day() < from.day()) {
+        if ((to.day() < from.day()) && (to.day() !== 0 && from.day() !== 6)) {
           to.add(1, 'day');
         }
         if (j === 1) {
-          if ((from.day() < to.day()) || (i === 1)) {
+          if ((from.day() !== to.day()) || (i === 1)) {
             program.from = from;
             program.to = to;
             todayPrograms.push(program);
