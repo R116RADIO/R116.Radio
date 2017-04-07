@@ -42,12 +42,15 @@ class ProgramSchedule extends Component {
 
     _.each(programs, (program) => {
       j++;
-      let check = true;
+      let check = true, check_day = true;
       _.each(program, (program) => {
         let from = (j === 1) ? moment(program.from, 'HH:mm').subtract(1, 'day').add(utcOffset, 'm') : moment(program.from, 'HH:mm').add(utcOffset, 'm');
         let to = (j === 1) ? moment(program.to, 'HH:mm').subtract(1, 'day').add(utcOffset, 'm') : moment(program.to, 'HH:mm').add(utcOffset, 'm');
-
-        if ((to.day() < from.day()) || (to.day() === 6 && from.day() === 0)) {
+		
+		if (to.day() === 0 && from.day() === 6) {
+			console.log("aaaaa");
+		}
+		else if ((to.day() < from.day()) || (to.day() === 6 && from.day() === 0)) {
           to.add(1, 'day');
         }
         if (j === 1) {
@@ -58,11 +61,15 @@ class ProgramSchedule extends Component {
             i = 1;
           }
         } else {
-          if ((from.day() === to.day()) && (check === true)) {
+		  if (from.day() !== to.day())
+			  check_day = false;
+		  if ((from.day() === to.day()) && check_day === false)
+			  check = false;
+          if (check === true) {
             program.from = from;
             program.to = to;
             todayPrograms.push(program);
-          } else check = false;
+          }
         }
       })
     });
@@ -99,7 +106,8 @@ class ProgramSchedule extends Component {
           {
             _.map(this.state.programSchedule, (program, index) => {
               return (
-                <li className={'home-page__program-schedule--item' + (program.name === this.props.currentProgram ? programActive : '')} key={index}>
+                <li className={'home-page__program-schedule--item' + 
+				(((program.name === this.props.currentProgram) && (moment().isBetween(program.from, program.to)))  ? programActive : '')} key={index}>
                   <div className="home-page__program-schedule--item--time">
                     {program.from.format('HH:mm')} - {program.to.format('HH:mm')}
                   </div>
