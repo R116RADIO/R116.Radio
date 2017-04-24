@@ -25,9 +25,33 @@
     ul {
       list-style: none;
       max-width: 300px;
-      margin-right: 70px;
+      // margin-right: 70px;
       padding-bottom: 50px;
     }
+<<<<<<< d7d0ab8f3bae4331d5016ce2eac310e8d026159f
+=======
+    ul#page-numbers {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      li {
+        margin-right: 5px;
+        &::before {
+          content: '';
+          width: 12px;
+          height: 12px;
+          background: #000;
+          border: 1px solid white;
+          display: block;
+          transition: 0.3s ease;
+        }
+        &.active::before, &:hover::before {
+          background: #fff;
+        }
+
+      }
+    }
+>>>>>>> ADd style
     &--title {
       color: $radio-col-light;
       margin: 0 0 30px 0;
