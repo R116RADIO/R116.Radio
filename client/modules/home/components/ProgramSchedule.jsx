@@ -46,7 +46,7 @@ class ProgramSchedule extends Component {
       _.each(program, (program) => {
         let from = (j === 1) ? moment(program.from, 'HH:mm').subtract(1, 'day').add(utcOffset, 'm') : moment(program.from, 'HH:mm').add(utcOffset, 'm');
         let to = (j === 1) ? moment(program.to, 'HH:mm').subtract(1, 'day').add(utcOffset, 'm') : moment(program.to, 'HH:mm').add(utcOffset, 'm');
-		
+
 		if (to.day() === 0 && from.day() === 6) {
 			console.log("aaaaa");
 		}
@@ -106,7 +106,7 @@ class ProgramSchedule extends Component {
           {
             _.map(this.state.programSchedule, (program, index) => {
               return (
-                <li className={'home-page__program-schedule--item' + 
+                <li className={'home-page__program-schedule--item' +
 				(((program.name === this.props.currentProgram) && (moment().isBetween(program.from, program.to)))  ? programActive : '')} key={index}>
                   <div className="home-page__program-schedule--item--time">
                     {program.from.format('HH:mm')} - {program.to.format('HH:mm')}
