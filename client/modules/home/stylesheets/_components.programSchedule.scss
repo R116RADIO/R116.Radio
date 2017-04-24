@@ -26,7 +26,8 @@
       list-style: none;
       max-width: 300px;
       // margin-right: 70px;
-      padding: 15px 0;
+      padding-bottom: 30px;
+      
     }
     ul#page-numbers {
       list-style: none;
@@ -234,6 +235,10 @@
       flex: 1;
       ul {
         margin: 0 auto;
+        padding: 15px 0;
+      }
+      ul#page-numbers {
+        padding-top: 0px;
         padding-bottom: 30px;
       }
       &--title {
