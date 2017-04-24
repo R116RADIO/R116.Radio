@@ -6,18 +6,44 @@ class ProgramSchedule extends Component {
     super(props);
     this.state = {
       programSchedule: [],
-      today: null
+      today: null,
+      itemPerPage: -1
     };
     this.setCurrentProgram = this.setCurrentProgram.bind(this);
+    this.radioHeight = {
+      title: 30 + 30,
+      item: 43,
+      itemsPadding: 50,
+      download: 50
+    };
+  }
+
+  getItemsPerPage() {
+    const {title, item, itemsPadding, download} = this.radioHeight;
+    const programSize = this.state.programSchedule.length;
+    const p = title + itemsPadding + download;
+    let radioBoxHeight = ($(window).height() - 150);
+    let i = 0;
+
+    radioBoxHeight = radioBoxHeight < 650 ? 650 : radioBoxHeight;
+    radioBoxHeight -= 50 + 220;
+    console.log(radioBoxHeight);
+    for (i = programSize; i > 0; i--)
+      if ((p + item * i) <= radioBoxHeight)
+        break;
+
+    return i;
   }
 
   componentDidMount() {
-
-
     this.setState({
       programSchedule: this.updateSchedule()
     }, () => {
       setInterval(this.setCurrentProgram, 1000);
+      this.setState({itemPerPage: this.getItemsPerPage()},
+      () => {
+        console.log(this.state.itemPerPage);
+      });
     });
   }
 
@@ -80,7 +106,6 @@ class ProgramSchedule extends Component {
     });
 
     this.setState({today: DayOfWeek});
-
     return todayPrograms;
   }
 
