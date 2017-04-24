@@ -7,7 +7,8 @@ class ProgramSchedule extends Component {
     this.state = {
       programSchedule: [],
       today: null,
-      itemPerPage: -1
+      currentPage: 1,
+      itemsPerPage: 5
     };
     this.setCurrentProgram = this.setCurrentProgram.bind(this);
     this.radioHeight = {
@@ -126,28 +127,48 @@ class ProgramSchedule extends Component {
     this.props.changeCurrentProgram(currentProgram);
   }
 
+  handleClick(event) {
+    this.setState({currentPage: Number(event.target.id)});
+  }
+
   render() {
     const programActive = ' home-page__program-schedule--item--active';
+    const {programSchedule, currentPage, itemsPerPage} = this.state;
+    const lastIndex = currentPage * itemsPerPage;
+    const firstIndex = lastIndex - itemsPerPage;
+    const currentItems = programSchedule.slice(firstIndex, lastIndex);
+    const renderItems = currentItems.map((program, index) => {
+      return (
+        <li className={'home-page__program-schedule--item' +
+        (((program.name === this.props.currentProgram) && (moment().isBetween(program.from, program.to))) ? programActive : '')} key={index}>
+          <div className="home-page__program-schedule--item--time">
+            {program.from.format('HH:mm')} - {program.to.format('HH:mm')}
+          </div>
+          <div className="home-page__program-schedule--item--program">
+            {program.name}
+          </div>
+        </li>
+      );
+    });
+    const pageNumbers = [];
+    for (let i = 1; i <= Math.ceil(programSchedule.length / itemsPerPage); i++)
+      pageNumbers.push(i);
+    const renderPageNumbers = pageNumbers.map(number => {
+      return (
+        <li key={number} id={number} onClick={this.handleClick.bind(this)}>
+          {number}
+        </li>
+      );
+    });
 
     return (
       <div className="home-page__program-schedule">
         <h3 className="home-page__program-schedule--title">Programme Schedule</h3>
         <ul>
-          {
-            _.map(this.state.programSchedule, (program, index) => {
-              return (
-                <li className={'home-page__program-schedule--item' +
-				(((program.name === this.props.currentProgram) && (moment().isBetween(program.from, program.to))) ? programActive : '')} key={index}>
-                  <div className="home-page__program-schedule--item--time">
-                    {program.from.format('HH:mm')} - {program.to.format('HH:mm')}
-                  </div>
-                  <div className="home-page__program-schedule--item--program">
-                    {program.name}
-                  </div>
-                </li>
-              );
-            })
-          }
+          {renderItems}
+        </ul>
+        <ul id="page-numbers">
+          {renderPageNumbers}
         </ul>
         <div className="home-page__program-schedule--download">
           <a href="https://play.google.com/store/apps/details?id=com.r116.radio" target="_blank" className="google-play-btn">
