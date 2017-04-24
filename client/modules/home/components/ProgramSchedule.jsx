@@ -101,7 +101,7 @@ class ProgramSchedule extends Component {
         } else {
           if (from.day() !== to.day())
             checkDay = false;
-          if ((from.day() === to.day()) && checkDay === false) 
+          if ((from.day() === to.day()) && checkDay === false)
             check = false;
           if (check === true) {
             program.from = from;
@@ -115,7 +115,7 @@ class ProgramSchedule extends Component {
     this.setState({today: DayOfWeek});
     this.setState({itemsPerPage: this.getItemsPerPage(todayPrograms)},
     () => {
-      console.log("ABABA", this.state.itemsPerPage);
+      console.log(this.state.itemsPerPage);
     });
     return todayPrograms;
   }
