@@ -12,8 +12,6 @@ class ProgramSchedule extends Component {
   }
 
   componentDidMount() {
-
-
     this.setState({
       programSchedule: this.updateSchedule()
     }, () => {
