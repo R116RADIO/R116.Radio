@@ -116,12 +116,15 @@ class ProgramSchedule extends Component {
 
   setCurrentProgram() {
     let currentProgram = '';
+    let item = 0;
 
     if (this.state.today !== moment().day())
       this.setState({programSchedule: this.updateSchedule()});
-    _.each(this.state.programSchedule, (program) => {
-      if (this.isActiveSchedule(program))
+    _.each(this.state.programSchedule, (program, index) => {
+      if (this.isActiveSchedule(program)) {
         currentProgram = program.name;
+        item = index + 1;
+      }
     });
 
     this.props.changeCurrentProgram(currentProgram);
@@ -168,7 +171,6 @@ class ProgramSchedule extends Component {
     const renderPageNumbers = pageNumbers.map(number => {
       return (
         <li key={number} id={number} onClick={this.handleClick.bind(this)}>
-          {number}
         </li>
       );
     });
