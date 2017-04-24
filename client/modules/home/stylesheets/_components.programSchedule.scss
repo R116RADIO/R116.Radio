@@ -28,6 +28,13 @@
       margin-right: 70px;
       padding-bottom: 50px;
     }
+    ul#page-numbers {
+      list-style: square;
+      display: flex;
+      li {
+        margin-right: 0.8em;
+      }
+    }
     &--title {
       color: $radio-col-light;
       margin: 0 0 30px 0;

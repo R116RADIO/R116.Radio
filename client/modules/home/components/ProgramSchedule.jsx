@@ -8,18 +8,44 @@ class ProgramSchedule extends Component {
       programSchedule: [],
       today: null,
       currentPage: 1,
-      itemsPerPage: 5
+      itemsPerPage: 5,
+      itemNumber: 0
     };
     this.setCurrentProgram = this.setCurrentProgram.bind(this);
+    this.radioHeight = {
+      title: 30 + 30,
+      item: 43,
+      itemsPadding: 50,
+      download: 50
+    };
+  }
+
+  getItemsPerPage() {
+    const {title, item, itemsPadding, download} = this.radioHeight;
+    const programSize = this.state.programSchedule.length;
+    const p = title + itemsPadding + download;
+    let radioBoxHeight = ($(window).height() - 150);
+    let i = 0;
+
+    radioBoxHeight = radioBoxHeight < 650 ? 650 : radioBoxHeight;
+    radioBoxHeight -= 50 + 220;
+    console.log(radioBoxHeight);
+    for (i = programSize; i > 0; i--)
+      if ((p + item * i) <= radioBoxHeight)
+        break;
+
+    return i;
   }
 
   componentDidMount() {
-
-
     this.setState({
       programSchedule: this.updateSchedule()
     }, () => {
       setInterval(this.setCurrentProgram, 1000);
+      this.setState({itemPerPage: this.getItemsPerPage()},
+      () => {
+        console.log(this.state.itemPerPage);
+      });
     });
   }
 
@@ -82,7 +108,6 @@ class ProgramSchedule extends Component {
     });
 
     this.setState({today: DayOfWeek});
-
     return todayPrograms;
   }
 
@@ -92,15 +117,24 @@ class ProgramSchedule extends Component {
 
   setCurrentProgram() {
     let currentProgram = '';
+    let item = 0;
 
     if (this.state.today !== moment().day())
       this.setState({programSchedule: this.updateSchedule()});
-    _.each(this.state.programSchedule, (program) => {
-      if (this.isActiveSchedule(program))
+    _.each(this.state.programSchedule, (program, index) => {
+      if (this.isActiveSchedule(program)) {
         currentProgram = program.name;
+        item = index + 1;
+      }
     });
 
     this.props.changeCurrentProgram(currentProgram);
+    if (this.state.itemNumber !== item) {
+      this.setState({
+        currentPage: Math.ceil(item / this.state.itemsPerPage),
+        itemNumber: item
+      });
+    }
   }
 
   handleClick(event) {
@@ -132,11 +166,9 @@ class ProgramSchedule extends Component {
     const renderPageNumbers = pageNumbers.map(number => {
       return (
         <li key={number} id={number} onClick={this.handleClick.bind(this)}>
-          {number}
         </li>
       );
     });
-
     return (
       <div className="home-page__program-schedule">
         <h3 className="home-page__program-schedule--title">Programme Schedule</h3>
