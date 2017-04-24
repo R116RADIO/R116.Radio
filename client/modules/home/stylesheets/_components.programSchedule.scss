@@ -25,14 +25,28 @@
     ul {
       list-style: none;
       max-width: 300px;
-      margin-right: 70px;
+      // margin-right: 70px;
       padding-bottom: 50px;
     }
     ul#page-numbers {
-      list-style: square;
+      list-style: none;
       display: flex;
+      justify-content: center;
       li {
-        margin-right: 0.8em;
+        margin-right: 5px;
+        &::before {
+          content: '';
+          width: 12px;
+          height: 12px;
+          background: #000;
+          border: 1px solid white;
+          display: block;
+          transition: 0.3s ease;
+        }
+        &.active::before, &:hover::before {
+          background: #fff;
+        }
+
       }
     }
     &--title {
