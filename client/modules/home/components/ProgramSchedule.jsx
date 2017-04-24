@@ -23,16 +23,26 @@ class ProgramSchedule extends Component {
   getItemsPerPage(todayPrograms) {
     const {title, item, itemsPadding, download} = this.radioHeight;
     const programSize = todayPrograms.length;
-    const p = title + itemsPadding + download;
-    let radioBoxHeight = ($(window).height() - 150);
+    let p = 0;
+    let radioBoxHeight = 0;
     let i = 0;
+    let ulSize = 0;
 
-    radioBoxHeight = radioBoxHeight < 650 ? 650 : radioBoxHeight;
-    radioBoxHeight -= 50 + 220;
+    if ($(window).width() > 769) { 
+      p = title + itemsPadding + download;
+      radioBoxHeight = ($(window).height() - 150);
+      radioBoxHeight = radioBoxHeight < 650 ? 650 : radioBoxHeight;
+      radioBoxHeight -= 50 + 220;
+      ulSize = 43 * 5;
+    } else {
+      radioBoxHeight = ($(window).height());
+      radioBoxHeight -= (71 + 40 * 2 + 30 * 2);
+      ulSize = radioBoxHeight;
+    }
+    $('.home-page__program-schedule ul').css('height', ulSize + 'px');
     for (i = programSize; i > 0; i--)
       if ((p + item * i) <= radioBoxHeight)
         break;
-
     return i;
   }
 
@@ -105,7 +115,7 @@ class ProgramSchedule extends Component {
     this.setState({today: DayOfWeek});
     this.setState({itemsPerPage: this.getItemsPerPage(todayPrograms)},
     () => {
-      console.log(this.state.itemPerPage);
+      console.log("ABABA", this.state.itemsPerPage);
     });
     return todayPrograms;
   }

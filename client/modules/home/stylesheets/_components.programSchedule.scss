@@ -26,12 +26,13 @@
       list-style: none;
       max-width: 300px;
       // margin-right: 70px;
-      padding-bottom: 50px;
+      padding-bottom: 30px;
     }
     ul#page-numbers {
       list-style: none;
       display: flex;
       justify-content: center;
+      height: auto !important;
       li {
         margin-right: 5px;
         &::before {
