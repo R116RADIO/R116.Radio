@@ -28,7 +28,7 @@ class ProgramSchedule extends Component {
     let i = 0;
     let ulSize = 0;
 
-    if ($(window).width() > 769) { 
+    if ($(window).width() > 769) {
       p = title + itemsPadding + download;
       radioBoxHeight = ($(window).height() - 150);
       radioBoxHeight = radioBoxHeight < 650 ? 650 : radioBoxHeight;
@@ -39,10 +39,14 @@ class ProgramSchedule extends Component {
       radioBoxHeight -= (71 + 40 * 2 + 30 * 2);
       ulSize = radioBoxHeight;
     }
-    $('.home-page__program-schedule ul').css('height', ulSize + 'px');
     for (i = programSize; i > 0; i--)
       if ((p + item * i) <= radioBoxHeight)
         break;
+
+    if ($(window).width() > 769)
+      ulSize = 43 * i;
+    $('.home-page__program-schedule ul').css('height', ulSize + 'px');
+
     return i;
   }
 
