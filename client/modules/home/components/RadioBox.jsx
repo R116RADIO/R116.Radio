@@ -1,6 +1,6 @@
 import React from 'react';
 import RadioPlayer from './RadioPlayer.jsx';
-import AudioQuality from './AudioQuality.jsx';
+import AudioGenre from './AudioGenre.jsx';
 
 class RadioBox extends React.Component {
   constructor(props) {
@@ -30,10 +30,10 @@ class RadioBox extends React.Component {
       <div className="radio-box">
         <div className="inner">
           <RadioPlayer
-            quality={this.props.quality}
+            genre={this.props.genre}
             currentProgram={this.props.currentProgram} />
           <div className="quality-wrapper hidden-desktop">
-            <AudioQuality quality={this.props.quality} changeQuality={this.props.changeQuality}/>
+            <AudioGenre genre={this.props.genre} changeGenre={this.props.changeGenre}/>
           </div>
         </div>
       </div>

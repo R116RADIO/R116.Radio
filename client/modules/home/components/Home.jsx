@@ -5,21 +5,27 @@ import ProgramSchedule from './ProgramSchedule.jsx';
 import Contact from './Contact.jsx';
 import RadioFooter from './Footer.jsx';
 
+export const GENRE_TYPE = {
+  'Slow Jams': 'r116slowjams',
+  'Hip Hop': 'r116hiphop',
+  'Pop Music': 'r116pop'
+};
+
 class Home extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      quality: 32,
+      genre: GENRE_TYPE['Slow Jams'],
       currentProgram: '',
       fullScreen: false
     };
-    this.changeQuality = this.changeQuality.bind(this);
+    this.changeGenre = this.changeGenre.bind(this);
     this.changeCurrentProgram = this.changeCurrentProgram.bind(this);
   }
 
-  changeQuality(quality) {
+  changeGenre(genre) {
     this.setState({
-      quality
+      genre
     });
   }
 
@@ -80,12 +86,12 @@ class Home extends React.Component {
       <div className="home-page">
         <div id="fullpage">
           <div className="section active">
-              <RadioHeader quality={this.state.quality} changeQuality={this.changeQuality} />
+              <RadioHeader genre={this.state.genre} changeGenre={this.changeGenre} />
               <div className="radio-box-all">
                 <RadioBox
-                  quality={this.state.quality}
+                  genre={this.state.genre}
                   currentProgram={this.state.currentProgram}
-                  changeQuality={this.changeQuality} />
+                  changeGenre={this.changeGenre} />
                 {/* <a href="#contacForm" className="scrollDown bounce">
                   <img src="img/md-down.svg"/>
                 </a>*/}

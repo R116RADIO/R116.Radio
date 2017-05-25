@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import AudioQuality from './AudioQuality.jsx';
+import AudioGenre from './AudioGenre.jsx';
 
 class Header extends Component {
   render() {
@@ -9,7 +9,7 @@ class Header extends Component {
           <img src="/img/logo-radio-116.jpg" alt="Logo"/>
         </a>
         <div className="quality-wrapper hidden-mobile">
-          <AudioQuality quality={this.props.quality} changeQuality={this.props.changeQuality}/>
+          <AudioGenre genre={this.props.genre} changeGenre={this.props.changeGenre}/>
         </div>
       </div>
     );
