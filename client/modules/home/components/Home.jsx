@@ -98,6 +98,7 @@ class Home extends React.Component {
 
                 {!this.state.fullScreen ?
                   <ProgramSchedule
+                    genre={this.state.genre}
                     currentProgram={this.state.currentProgram}
                     changeCurrentProgram={this.changeCurrentProgram} /> : null
                 }
@@ -113,6 +114,7 @@ class Home extends React.Component {
           <div className="section customSchedule">
             {this.state.fullScreen ?
               <ProgramSchedule
+                genre={this.state.genre}
                 currentProgram={this.state.currentProgram}
                 changeCurrentProgram={this.changeCurrentProgram} /> : null
             }

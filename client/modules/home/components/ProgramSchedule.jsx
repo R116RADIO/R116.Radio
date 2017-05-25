@@ -52,14 +52,22 @@ class ProgramSchedule extends Component {
 
   componentDidMount() {
     this.setState({
-      programSchedule: this.updateSchedule()
+      programSchedule: this.updateSchedule(this.props.genre)
     }, () => {
       setInterval(this.setCurrentProgram, 1000);
     });
   }
 
-  updateSchedule() {
-    let programSchedule = ENUMS.PROGRAM_SCHEDULE;
+  componentWillReceiveProps(nextProps) {
+    if (this.props.genre !== nextProps.genre) {
+      this.setState({
+        programSchedule: this.updateSchedule(nextProps.genre)
+      });
+    }
+  }
+
+  updateSchedule(genre) {
+    let programSchedule = ENUMS[genre].PROGRAM_SCHEDULE;
     const utcOffset = moment().utcOffset();
     const DayOfWeek = moment().day();
     const dayBefore = moment().subtract(1, 'day').day();
@@ -133,7 +141,7 @@ class ProgramSchedule extends Component {
     let item = 0;
 
     if (this.state.today !== moment().day())
-      this.setState({programSchedule: this.updateSchedule()});
+      this.setState({programSchedule: this.updateSchedule(this.props.genre)});
     _.each(this.state.programSchedule, (program, index) => {
       if (this.isActiveSchedule(program)) {
         currentProgram = program.name;
@@ -198,20 +206,21 @@ class ProgramSchedule extends Component {
         <ul id="page-numbers">
           {renderPageNumbers}
         </ul>
-        <div className="home-page__program-schedule--download">
+        {/*<div className="home-page__program-schedule--download">
           <a href="https://play.google.com/store/apps/details?id=com.r116.radio" target="_blank" className="google-play-btn">
             <img src="/img/google-play.png" alt="" />
           </a>
           <a href="#" className="appstore-btn">
             <img src="/img/appstore.png" alt="" />
           </a>
-        </div>
+        </div>*/}
       </div>
     );
   }
 }
 
 ProgramSchedule.propTypes = {
+  genre: React.PropTypes.string.isRequired,
   currentProgram: React.PropTypes.string.isRequired,
   changeCurrentProgram: React.PropTypes.func.isRequired
 };
