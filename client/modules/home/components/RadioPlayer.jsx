@@ -155,19 +155,19 @@ class RadioPlayer extends React.Component {
 
     switch (genre) {
       case GENRE_TYPE['Slow Jams']:
-        src = `http://dione.shoutca.st:8138/${genre}?cb=${new Date().getTime()}`;
+        src = `http://admin.r116radio.com:8014/stream${genre}?cb=${new Date().getTime()}`;
 
         break;
       case GENRE_TYPE['Hip Hop']:
-        src = `http://dione.shoutca.st:8130/${genre}?cb=${new Date().getTime()}`;
+        src = `http://admin.r116radio.com:8006/stream${genre}?cb=${new Date().getTime()}`;
 
         break;
       case GENRE_TYPE['Pop Music']:
-        src = `http://dione.shoutca.st:8142/${genre}?cb=${new Date().getTime()}`;
+        src = `http://admin.r116radio.com:8010/stream${genre}?cb=${new Date().getTime()}`;
 
         break;
       default:
-        src = `http://dione.shoutca.st:8138/${genre}?cb=${new Date().getTime()}`;
+        src = `http://admin.r116radio.com:8014/stream${genre}?cb=${new Date().getTime()}`;
 
         break;
     }
